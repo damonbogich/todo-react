@@ -1,9 +1,13 @@
 import React from 'react';
 
-export default function Todo (props) {
+export default function Todo ({handleItemCompletion, task}) {
+    let style = {
+        textDecoration: 'line-through'
+    }
+    
     return (
-        <li>
-            {props.task}
+        <li style={task.completed ? {textDecoration: 'line-through'} : {textDecoration: 'none'} } id={task.id} onClick={() => handleItemCompletion(task.id)}>
+            {task.task}
         </li>
     )
 };

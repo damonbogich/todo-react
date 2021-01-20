@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -27,13 +28,25 @@ class App extends React.Component {
     }
   }
 
-
+  handleItemCompletion = id => {
+    let tasks = this.state.tasks;
+    //loop through array of tasks to find task that matches id passed in
+    //change that tasks completed flag to the opposite of what it is
+    tasks.forEach(item => {
+      if (item.id === id) {
+        item.completed = !item.completed
+      }
+    })
+    this.setState(tasks)
+    console.log(this.state.tasks)
+  }
 
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList tasks={this.state.tasks} />
+        <TodoList handleItemCompletion={this.handleItemCompletion} tasks={this.state.tasks} />
+        <TodoForm />
       </div>
     );
   }

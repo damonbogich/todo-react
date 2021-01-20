@@ -3,17 +3,16 @@
 import React from 'react';
 import Todo from './Todo';
 
-export default function TodoList ({tasks}) {
-    console.log(tasks, 'props from list')
+export default function TodoList ({handleItemCompletion, tasks}) {
+  
     return (
         <div>
             to do list component where todos will be generated
             <ul>
             {tasks.map((task) => {
-                return <Todo key={task.id} task={task.task}/>
+                return <Todo handleItemCompletion={handleItemCompletion} key={task.id} task={task}/>
             })}
             </ul>
-            
         </div>
     )
 }
