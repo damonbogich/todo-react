@@ -42,12 +42,26 @@ class App extends React.Component {
     console.log(this.state.tasks)
   }
 
+  //1. function to set whatever is typed into the input to the new task in state
+  handleInputChange = (e) => {
+    this.setState({newTask: e.target.value})
+    console.log(this.state.newTask)
+  }
+
+  //2. function to add whatever string is being stored in new task to the array of todos
+  addItem = (string) => {
+    this.setState({
+      tasks: [...this.state.tasks, { task: string, id: Date.now(), completed: false}],
+      newTask: ""
+    })
+  };
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList handleItemCompletion={this.handleItemCompletion} tasks={this.state.tasks} />
-        <TodoForm />
+        <TodoForm newTask={this.state.newTask} addItem={this.addItem} handleInputChange={this.handleInputChange}/>
       </div>
     );
   }
