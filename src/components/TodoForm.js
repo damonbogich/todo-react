@@ -6,13 +6,15 @@ export default function TodoForm(props) {
     
     const handleSubmit = e => {
         e.preventDefault();
-        addItem(props.newTask);
+        if(props.newTask !== "") {
+            addItem(props.newTask);
+        }
     }
     return (
         <form onSubmit={handleSubmit}>
             <input value={props.newTask} onChange={(e) => handleInput(e)} type='text' placeholder="add todo" />
-            <button >Add To Do</button>
-            {/* <button>Clear Completed</button> */}
+            <button>Add To Do</button>
+            <button>Clear Completed</button>
         </form>
     )
 }
