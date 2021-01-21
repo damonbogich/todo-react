@@ -24,7 +24,8 @@ class App extends React.Component {
         id: 1528817084368,
         completed: false
       }
-    ]
+    ], 
+    newTask: ""
     }
   }
 
